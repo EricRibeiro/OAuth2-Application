@@ -6,8 +6,8 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script>
         var token = '';
-        var client_id = '208ebfa704654808b26c0f54521682f1'; // Application ID - Substitua pelo seu APP ID
-        var url = 'https://tecweb-rommel.azurewebsites.net/oauth2/index.html'; // URL da sua página - Substitua pela sua
+        var client_id = '2a354a0507c1ef197409'; // Application ID - Substitua pelo seu APP ID
+        var url = 'https://ericribeiro.github.io/OAuth2-Application/index.html'; // URL da sua página - Substitua pela sua
         var audio;
 
         // Função para obter parametros passados via Query String
@@ -57,7 +57,7 @@
         // para o Spotify para pegar a token de acesso
         token = getSpotifyVariable('access_token');
         if (!token)
-            window.location = 'https://accounts.spotify.com/authorize?client_id=' + client_id + '&response_type=token&redirect_uri=' + url;
+            window.location = 'https://github.com/login/oauth/authorize?client_id=' + client_id + '&response_type=token&redirect_uri=' + url;
     </script>
     <title>Document</title>
     <style>
