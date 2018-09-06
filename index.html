@@ -14,8 +14,23 @@
         }
 
         var token = getParameterByName();
+        token = token.code;
 
-        console.log(token);
+        var client_secret = 'd2fe32f10b29e9e8d335b531d951df77fdcccde9';
+
+        if(!token) {
+            var oauthUrl = 'https://github.com/login/oauth/access_token?client_id=' + client_id +
+                '&client_secret=' + client_secret + '&code=' + token +
+                '&response_type=token&redirect_uri=' + url;
+
+            $.ajax({
+                url: oauthUrl,
+                type: "POST",
+                success: function (data) {
+                  console.log("FUNFOU!");
+                }
+            });
+        }
 
         function getParameterByName() {
             var result = {}, keyValuePairs = location.search.slice(1).split("&");
