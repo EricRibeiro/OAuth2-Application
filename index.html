@@ -12,6 +12,7 @@
         var url = 'https://ericribeiro.github.io/OAuth2-Application/index.html'; // URL da sua página - Substitua pela sua
 
         if(!token) {
+            token = 'blob';
             window.location = 'https://github.com/login/oauth/authorize?client_id=' + client_id + '&response_type=token&redirect_uri=' + url;
 
         } else if (!tokenB) {
@@ -33,7 +34,7 @@
         } else {
             alert("DEU BOM!");
         }
-        
+
 
         function getParameterByName() {
             var result = {}, keyValuePairs = location.search.slice(1).split("&");
