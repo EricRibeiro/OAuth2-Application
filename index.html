@@ -22,7 +22,7 @@
             var oauthUrl = 'https://github.com/login/oauth/access_token?client_id=' + client_id + '&client_secret=' +
                 client_secret + '&code=' + token + '&response_type=code&redirect_uri=' + url;
 
-            $.getJSON('http://cors.io/?' + oauthUrl,function(){})
+            $.getJSON('https://cors.io/?' + oauthUrl,function(){})
 
             // $.ajax({
             //     url: 'https://cors.io/?' + oauthUrl,
