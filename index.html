@@ -11,20 +11,20 @@
         var client_secret = 'd2fe32f10b29e9e8d335b531d951df77fdcccde9';
         var url = 'https://ericribeiro.github.io/OAuth2-Application/index.html'; // URL da sua página - Substitua pela sua
 
-        if(!token) {
-            $.ajax({
-                url: ' https://github.com/login/oauth/access_token?client_id=' + client_id + '&response_type=token&redirect_uri=' + url,
-                crossDomain: true,
-                type: "GET",
-                headers: {
-                    "Access-Control-Allow-Origin":"*"
-                },
-                success: function (data) {
-                    token = "BATATA";
-                }
-            });
-            token ="BATATA";
-            // window.location = ' https://github.com/login/oauth/access_token?client_id=' + client_id + '&response_type=token&redirect_uri=' + url;
+        if(url === location.href) {
+            // $.ajax({
+            //     url: ' https://github.com/login/oauth/access_token?client_id=' + client_id + '&response_type=token&redirect_uri=' + url,
+            //     crossDomain: true,
+            //     type: "GET",
+            //     headers: {
+            //         "Access-Control-Allow-Origin":"*"
+            //     },
+            //     success: function (data) {
+            //         token = "BATATA";
+            //     }
+            // });
+            // token ="BATATA";
+            window.location = ' https://github.com/login/oauth/access_token?client_id=' + client_id + '&response_type=token&redirect_uri=' + url;
 
         } else if (!tokenB) {
 
