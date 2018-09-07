@@ -27,8 +27,7 @@
             $.get(corsUrl + oauthUrl, function (data) {
                 accessToken = data.split("&");
                 accessToken = getParameterByName(accessToken);
-                accessToken = accessToken.accessToken;
-                alert(accessToken);
+                console.log(accessToken);
             });
 
         }
