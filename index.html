@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script>
+        var accessToken = '';
         var token = '';
         var tokenB = '';
         var client_id = '2a354a0507c1ef197409'; // Application ID - Substitua pelo seu APP ID
@@ -16,22 +17,19 @@
                 '&response_type=code&redirect_uri=' + url;
 
         } else if (!tokenB) {
-            token = getParameterByName();
+            var parameters = location.search.slice(1).split("&");
+            token = getParameterByName(parameters);
             token = token.code;
 
             var corsUrl = 'https://cors.io/?';
-
             var oauthUrl = 'https://github.com/login/oauth/access_token?client_id=' + client_id + '&client_secret=' +
                 client_secret + '&code=' + token + '&response_type=code&redirect_uri=' + url;
 
-            console.log("Fazendo requisição...");
-
             $.get(corsUrl + oauthUrl, function (data) {
-                $("body").html(data);
-                alert("Load was performed.");
+                accessToken = getParameterByName(data);
+                accessToken = accessToken.acessToken;
+                console.log(accessToken);
             });
-
-            console.log("Requisição feita...");
 
         } else {
             alert("DEU BOM!");
@@ -39,8 +37,8 @@
         }
 
 
-        function getParameterByName() {
-            var result = {}, keyValuePairs = location.search.slice(1).split("&");
+        function getParameterByName(parameters) {
+            var result = {}, keyValuePairs = ;
             keyValuePairs.forEach(function (keyValuePair) {
                 keyValuePair = keyValuePair.split('=');
                 result[decodeURIComponent(keyValuePair[0])] = decodeURIComponent(keyValuePair[1]) || '';
