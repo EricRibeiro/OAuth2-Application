@@ -3,7 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-grid.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-reboot.min.css">
+
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/bootstrap.bundle.js"></script>
+
     <script>
         var accessToken = '';
         var token = '';
@@ -15,8 +23,9 @@
             window.location = ' https://github.com/login/oauth/authorize?client_id=' + client_id +
                 '&response_type=code&redirect_uri=' + url;
 
-        } else if (!accessToken) {
+        } else (!accessToken) {
             var locationToken = location.search.slice(1).split("&");
+
             token = getParameterByName(locationToken);
             token = token.code;
 
@@ -28,9 +37,12 @@
                 accessToken = data.split("&");
                 accessToken = getParameterByName(accessToken);
                 accessToken = accessToken.access_token;
-                console.log(accessToken);
             });
 
+        }
+
+        function getUserInfo() {
+            window.location = 'https://api.github.com/user?access_token=' + accessToken;
         }
 
         function getParameterByName(parameters) {
@@ -41,33 +53,6 @@
             });
 
             return result;
-        }
-
-        function executaConsulta() {
-            $.ajax({
-                url: 'https://api.spotify.com/v1/search',
-                data: {
-                    type: 'track',
-                    q: $('#query').val()
-                },
-                headers: {
-                    Authorization: 'Bearer ' + token
-                },
-                dataType: "json",
-                success: function (data) {
-                    var strSaida = '';
-
-                    for (i = 0; i < data.tracks.items.length; i++) {
-                        strSaida += 'Musica: <a href="#" onclick="javascript:play(\'' +
-                            data.tracks.items[i].preview_url + '\')">' +
-                            data.tracks.items[i].album.name +
-                            '- ' + data.tracks.items[i].name + '</a><br>';
-                    }
-
-                    $('#conteudo').html('<p>Total de Musicas: ' + data.tracks.items.length + '</p>' +
-                        strSaida);
-                }
-            });
         }
 
     </script>
@@ -81,11 +66,19 @@
 </head>
 
 <body>
-<div id="topo"> Rommel Music</div>
-<input type="text" id="query">
-<button onclick="executaConsulta()">Consulta</button>
-<div id="conteudo"></div>
-<div id="rodape">Copyright 2017</div>
+    <div class="container" style="text-align: center">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="font-weight-normal">Clique no botão para ver os seus dados.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <button type="button" class="btn btn-info" onclick="getUserInfo()">Meus Dados</button>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
