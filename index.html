@@ -23,7 +23,7 @@
             window.location = ' https://github.com/login/oauth/authorize?client_id=' + client_id +
                 '&response_type=code&redirect_uri=' + url;
 
-        } else (!accessToken) {
+        } else if (!accessToken) {
             var locationToken = location.search.slice(1).split("&");
 
             token = getParameterByName(locationToken);
