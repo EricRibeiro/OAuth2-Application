@@ -23,7 +23,7 @@
                 client_secret + '&code=' + token + '&response_type=code&redirect_uri=' + url;
 
             $.ajax({
-                url: 'https://cors.io/?u=' + oauthUrl,
+                url: 'https://cors.io/?' + oauthUrl,
                 type: "POST",
                 dataType: "json",
                 crossDomain : true,
