@@ -18,9 +18,10 @@
         } else if (!tokenB) {
             token = getParameterByName();
             token = token.code;
+            url2 = 'https://ericribeiro.github.io/OAuth2-Application/oauth/oauth.html';
 
             var oauthUrl = 'https://github.com/login/oauth/access_token?client_id=' + client_id + '&client_secret=' +
-                client_secret + '&code=' + token +'&response_type=token&redirect_uri=' + url;
+                client_secret + '&code=' + token +'&response_type=token&redirect_uri=' + url2;
 
             $.ajax({
                 url: oauthUrl,
