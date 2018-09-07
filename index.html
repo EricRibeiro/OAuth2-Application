@@ -22,21 +22,9 @@
             var oauthUrl = 'https://github.com/login/oauth/access_token?client_id=' + client_id + '&client_secret=' +
                 client_secret + '&code=' + token + '&response_type=code&redirect_uri=' + url;
 
-            $.getJSON('https://cors.io/?' + oauthUrl,function(){})
-
-            // $.ajax({
-            //     url: 'https://cors.io/?' + oauthUrl,
-            //     type: "POST",
-            //     dataType: "json",
-            //     crossDomain : true,
-            //     success: function (data, textStatus, jQxhr) {
-            //         console.log(JSON.stringify(data));
-            //     }
-            // });
-
-            // $.post(oauthUrl, function (data) {
-            //     alert("Data Loaded: " + data);
-            // });
+            $.getJSON('https://cors.io/?' + oauthUrl, function (data) {
+                console.log(data);
+            })
 
         } else {
             alert("DEU BOM!");
