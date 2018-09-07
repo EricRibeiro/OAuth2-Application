@@ -6,31 +6,34 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script>
         var token = '';
+        var tokenB = '';
         var client_id = '2a354a0507c1ef197409'; // Application ID - Substitua pelo seu APP ID
+        var client_secret = 'd2fe32f10b29e9e8d335b531d951df77fdcccde9';
         var url = 'https://ericribeiro.github.io/OAuth2-Application/index.html'; // URL da sua página - Substitua pela sua
 
         if(!token) {
             window.location = 'https://github.com/login/oauth/authorize?client_id=' + client_id + '&response_type=token&redirect_uri=' + url;
-        }
 
-        var token = getParameterByName();
-        token = token.code;
+        } else if (!tokenB) {
 
-        var client_secret = 'd2fe32f10b29e9e8d335b531d951df77fdcccde9';
+            token = getParameterByName();
+            token = token.code;
 
-        if(!token) {
-            var oauthUrl = 'https://github.com/login/oauth/access_token?client_id=' + client_id +
-                '&client_secret=' + client_secret + '&code=' + token +
-                '&response_type=token&redirect_uri=' + url;
+            var oauthUrl = 'https://github.com/login/oauth/authorize?client_id=' + client_id + '&client_secret=' +
+                client_secret + '&code=' + token +'&response_type=token&redirect_uri=' + url;
 
             $.ajax({
                 url: oauthUrl,
                 type: "POST",
                 success: function (data) {
-                  console.log("FUNFOU!");
+                    tokenB = data.access_token;
                 }
             });
+
+        } else {
+            alert("DEU BOM!");
         }
+        
 
         function getParameterByName() {
             var result = {}, keyValuePairs = location.search.slice(1).split("&");
