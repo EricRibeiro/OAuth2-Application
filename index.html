@@ -24,13 +24,9 @@
 
             $.ajax({
                 url: oauthUrl,
-                crossDomain: true,
                 type: "POST",
-                headers: {
-                    "Access-Control-Allow-Origin":"*"
-                },
                 success: function (data) {
-                    tokenB = data.access_token;
+                    tokenB = data;
                 }
             });
 
