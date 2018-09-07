@@ -7,7 +7,6 @@
     <script>
         var accessToken = '';
         var token = '';
-        var tokenB = '';
         var client_id = '2a354a0507c1ef197409'; // Application ID - Substitua pelo seu APP ID
         var client_secret = 'd2fe32f10b29e9e8d335b531d951df77fdcccde9';
         var url = 'https://ericribeiro.github.io/OAuth2-Application/index.html'; // URL da sua página - Substitua pela sua
@@ -16,9 +15,9 @@
             window.location = ' https://github.com/login/oauth/authorize?client_id=' + client_id +
                 '&response_type=code&redirect_uri=' + url;
 
-        } else if (!tokenB) {
-            var parameters = location.search.slice(1).split("&");
-            token = getParameterByName(parameters);
+        } else if (!accessToken) {
+            var locationToken = location.search.slice(1).split("&");
+            token = getParameterByName(locationToken);
             token = token.code;
 
             var corsUrl = 'https://cors.io/?';
@@ -26,14 +25,12 @@
                 client_secret + '&code=' + token + '&response_type=code&redirect_uri=' + url;
 
             $.get(corsUrl + oauthUrl, function (data) {
-                accessToken = getParameterByName(data);
-                accessToken = accessToken.acessToken;
-                console.log(accessToken);
+                accessToken = data.split("&");
+                accessToken = getParameterByName(accessToken);
             });
 
         } else {
             alert("DEU BOM!");
-
         }
 
 
