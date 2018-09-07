@@ -23,12 +23,11 @@
                 client_secret + '&code=' + token + '&response_type=code&redirect_uri=' + url;
 
             $.ajax({
-                url: oauthUrl,
+                url: 'https://cors.io/?' + oauthUrl,
                 type: "POST",
-                dataType: "json",
                 crossDomain : true,
                 success: function (data, textStatus, jQxhr) {
-                    console.log(JSON.stringify(data));
+                    console.log(data);
                 }
             });
 
