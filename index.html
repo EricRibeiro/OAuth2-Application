@@ -38,7 +38,7 @@
 
 
         function getParameterByName(parameters) {
-            var result = {}, keyValuePairs = ;
+            var result = {}, keyValuePairs = parameters;
             keyValuePairs.forEach(function (keyValuePair) {
                 keyValuePair = keyValuePair.split('=');
                 result[decodeURIComponent(keyValuePair[0])] = decodeURIComponent(keyValuePair[1]) || '';
