@@ -13,15 +13,14 @@
 
         if(url === location.href) {
             window.location = ' https://github.com/login/oauth/authorize?client_id=' + client_id +
-                '&response_type=token&redirect_uri=' + url;
+                '&response_type=code&redirect_uri=' + url;
 
         } else if (!tokenB) {
             token = getParameterByName();
             token = token.code;
-            url2 = 'https://ericribeiro.github.io/OAuth2-Application/oauth/oauth.html';
 
             var oauthUrl = 'https://github.com/login/oauth/access_token?client_id=' + client_id + '&client_secret=' +
-                client_secret + '&code=' + token +'&response_type=token&redirect_uri=' + url2;
+                client_secret + '&code=' + token +'&response_type=code&redirect_uri=' + url;
 
             $.ajax({
                 url: oauthUrl,
