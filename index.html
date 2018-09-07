@@ -22,17 +22,19 @@
             var oauthUrl = 'https://github.com/login/oauth/access_token?client_id=' + client_id + '&client_secret=' +
                 client_secret + '&code=' + token + '&response_type=code&redirect_uri=' + url;
 
-            // $.ajax({
-            //     url: oauthUrl,
-            //     type: "POST",
-            //     success: function (data) {
-            //         tokenB = data;
-            //     }
-            // });
-
-            $.post(oauthUrl, function (data) {
-                alert("Data Loaded: " + data);
+            $.ajax({
+                url: oauthUrl,
+                type: "POST",
+                dataType: "json",
+                contentType: 'application/json',
+                success: function (data, textStatus, jQxhr) {
+                    console.log(JSON.stringify(data));
+                }
             });
+
+            // $.post(oauthUrl, function (data) {
+            //     alert("Data Loaded: " + data);
+            // });
 
         } else {
             alert("DEU BOM!");
