@@ -20,12 +20,18 @@
             token = token.code;
 
             var corsUrl = 'https://cors.io/?';
+
             var oauthUrl = 'https://github.com/login/oauth/access_token?client_id=' + client_id + '&client_secret=' +
                 client_secret + '&code=' + token + '&response_type=code&redirect_uri=' + url;
 
-            $.post(corsUrl + oauthUrl, function (data) {
+            console.log("Fazendo requisição...");
+
+            $.get(corsUrl + oauthUrl, function (data) {
                 $("body").html(data);
+                alert("Load was performed.");
             });
+
+            console.log("Requisição feita...");
 
         } else {
             alert("DEU BOM!");
