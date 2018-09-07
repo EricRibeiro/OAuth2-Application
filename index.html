@@ -11,7 +11,7 @@
         var client_secret = 'd2fe32f10b29e9e8d335b531d951df77fdcccde9';
         var url = 'https://ericribeiro.github.io/OAuth2-Application/index.html'; // URL da sua página - Substitua pela sua
 
-        if(url === location.href) {
+        if (url === location.href) {
             window.location = ' https://github.com/login/oauth/authorize?client_id=' + client_id +
                 '&response_type=code&redirect_uri=' + url;
 
@@ -20,14 +20,18 @@
             token = token.code;
 
             var oauthUrl = 'https://github.com/login/oauth/access_token?client_id=' + client_id + '&client_secret=' +
-                client_secret + '&code=' + token +'&response_type=code&redirect_uri=' + url;
+                client_secret + '&code=' + token + '&response_type=code&redirect_uri=' + url;
 
-            $.ajax({
-                url: oauthUrl,
-                type: "POST",
-                success: function (data) {
-                    tokenB = data;
-                }
+            // $.ajax({
+            //     url: oauthUrl,
+            //     type: "POST",
+            //     success: function (data) {
+            //         tokenB = data;
+            //     }
+            // });
+
+            $.post(oauthUrl, function (data) {
+                alert("Data Loaded: " + data);
             });
 
         } else {
